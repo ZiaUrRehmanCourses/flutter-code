@@ -7,32 +7,72 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.network('https://cfmgroup.co.uk/wp-content/uploads/2019/05/logo_0014_5a4e432a2da5ad73df7efe7a.png',height: 40,),
-        actions: [
+        title: Text('Instagram'),
+        
+                actions: [
           SizedBox(width: 10,),
           Image.network('https://openclipart.org/image/2400px/svg_to_png/234835/heart-outline.png',width: 20,color: const Color.fromARGB(255, 0, 0, 0),),
           SizedBox(width: 10,),
-          Image.network('https://icon-library.com/images/facebook-messenger-icon-vector/facebook-messenger-icon-vector-21.jpg',width: 20,color: const Color.fromARGB(255, 0, 0, 0),),
+          Image.asset('assets/images/messenger_icon.jpg',width: 20,),
+
+
           SizedBox(width: 10,),
 
         ],
       ),
 
-      body: Column(children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(children: [
-            MyNameAndStatusWidget(),
-            NameAndStatusWidget(),
-            NameAndStatusWidget(),
-            NameAndStatusWidget(),
-            NameAndStatusWidget(),
-            NameAndStatusWidget(),
-            NameAndStatusWidget(),
-          ],),
-        ),
-        Divider(color: Colors.grey,height: 5,thickness: 2,)
-      ],),
+      body: SingleChildScrollView(
+        child: Column(children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(children: [
+              MyNameAndStatusWidget(),
+              NameAndStatusWidget(),
+              NameAndStatusWidget(),
+              NameAndStatusWidget(),
+              NameAndStatusWidget(),
+              NameAndStatusWidget(),
+              NameAndStatusWidget(),
+            ],),
+          ),
+          Divider(color: Colors.grey,thickness: 1,),
+        
+          Container(
+            // color: Colors.red,
+            child: Column(children: [
+            Row(children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: CircleAvatar(
+                  radius: 15,
+                  backgroundImage: NetworkImage('https://levycon.com/public/assets/img/testimonial-1.webp'),
+                ),
+              ),
+        
+              Text('user name'),
+              Spacer(),
+              Icon(Icons.more_vert_outlined)
+        
+        
+            ],),
+            Container(
+              width: double.infinity,
+           
+              child: Image.network('https://levycon.com/public/assets/img/testimonial-1.webp',fit: BoxFit.cover,)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                Icon(Icons.favorite_border),
+                Icon(Icons.comment_sharp),
+                Icon(Icons.share),
+           SizedBox(width: MediaQuery.of(context).size.width*.4,),
+                Icon(Icons.share),
+              ],)
+        
+          ],),)
+        
+        ],),
+      ),
     );
   }
 }
