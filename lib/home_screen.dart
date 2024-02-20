@@ -1,8 +1,25 @@
 import 'package:fiveapp/components/post_widget.dart';
+import 'package:fiveapp/post_screen.dart';
+import 'package:fiveapp/search_screen.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+   HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var currentindex=0;
+
+  var screens=[
+    PostScreen(),
+    SearchScreen(),
+    PostScreen(),
+    SearchScreen(),
+    SearchScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,46 +39,44 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
 
-      body: SingleChildScrollView(
-        child: Column(children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: [
-              MyNameAndStatusWidget(),
-              NameAndStatusWidget(),
-              NameAndStatusWidget(),
-              NameAndStatusWidget(),
-              NameAndStatusWidget(),
-              NameAndStatusWidget(),
-              NameAndStatusWidget(),
-            ],),
-          ),
-          Divider(color: Colors.grey,thickness: 1,),
-        PostCardWidget(),
-        PostCardWidget(),
-        PostCardWidget(),
-        PostCardWidget(),
-        PostCardWidget(),
-        PostCardWidget(),
-        PostCardWidget(),
-       
-        
-        ],),
-      ),
-
+      body:screens[currentindex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedIconTheme: IconThemeData(color: Colors.black),
-        unselectedIconTheme: IconThemeData(color: Colors.grey),
-        
-        
-        items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: false,
 
-      ]) ,
+        currentIndex: currentindex,
+        onTap: (val){
+          print(val);
+          currentindex=val;
+          setState(() {
+            
+          });
+
+        },
+        selectedItemColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),label: 'home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search),label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.add),label: 'Add'),
+          BottomNavigationBarItem(icon: Icon(Icons.video_collection_rounded),label: 'Video'),
+          BottomNavigationBarItem(icon: Icon(Icons.person),label: 'person'),
+        
+      ]),
+
+      // bottomNavigationBar: BottomNavigationBar(
+      //   selectedIconTheme: IconThemeData(color: Colors.black),
+      //   unselectedIconTheme: IconThemeData(color: Colors.grey),
+        
+        
+      //   items: [
+      //   BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
+      //   BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
+      //   BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
+      //   BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
+      //   BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
+
+      // ]) ,
 
 
     );

@@ -27,7 +27,7 @@ class PostCardWidget extends StatelessWidget {
             Container(
               width: double.infinity,
            
-              child: Image.network('https://levycon.com/public/assets/img/testimonial-1.webp',fit: BoxFit.cover,)),
+              child: Image.network('https://png.pngtree.com/thumb_back/fh260/background/20211031/pngtree-abstract-bg-image_914283.png',fit: BoxFit.cover,)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
